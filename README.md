@@ -123,7 +123,7 @@ Cineginsa/
 ├── display.qml                 ← écran projecteur
 ├── assets/
 │   ├── banner.svg
-│   └── ...
+│   └── ... 
 ├── LICENSE
 └── THIRD_PARTY_NOTICES.md
 ```
