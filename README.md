@@ -94,7 +94,7 @@ Avec Qt Creator : ouvre `CMakeLists.txt`, choisis un kit Qt 6, puis `Ctrl+R`.
 En ligne de commande :
 
 ```bash
-git clone https://github.com/<ton-utilisateur>/Cineginsa.git
+git clone https://github.com/clementgvs/Cineginsa.git
 cd Cineginsa
 cmake -S . -B build
 cmake --build build
