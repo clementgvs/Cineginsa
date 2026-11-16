@@ -1,4 +1,5 @@
 /home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/Cineginsa.dir
+/home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/Cineginsa_qmlimportscan.dir
 /home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/edit_cache.dir
 /home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
 /home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/list_install_components.dir
