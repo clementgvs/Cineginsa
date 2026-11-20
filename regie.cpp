@@ -94,7 +94,9 @@ void Regie::setScene(const QString &scene)
 void Regie::sceneSuivante()
 {
     const int i = kOrdre.indexOf(m_scene);
-    if (i >= 0 && i < kOrdre.size() - 1)
+    if (i < 0)
+        setScene(kOrdre.first());
+    else if (i < kOrdre.size() - 1)
         setScene(kOrdre.at(i + 1));
 }
 

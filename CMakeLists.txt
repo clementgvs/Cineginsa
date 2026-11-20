@@ -31,6 +31,9 @@ set_target_properties(Cineginsa PROPERTIES
     MACOSX_BUNDLE TRUE
 )
 
+enable_testing()
+add_subdirectory(tests)
+
 include(GNUInstallDirs)
 install(TARGETS Cineginsa
     BUNDLE DESTINATION .
