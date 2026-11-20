@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Cineginsa - auto-régie pour club ciné" width="100%">
+  <img src="assets/banner.png" alt="Cineginsa - auto-régie pour le club ciné" width="100%">
 </p>
 
 <p align="center">

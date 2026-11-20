@@ -79,6 +79,16 @@ build CMakeFiles/Cineginsa.dir/mainwindow.cpp.o: CXX_COMPILER__Cineginsa_unscann
   OBJECT_FILE_DIR = CMakeFiles/Cineginsa.dir
   TARGET_SUPPORT_DIR = CMakeFiles/Cineginsa.dir
 
+build CMakeFiles/Cineginsa.dir/regie.cpp.o: CXX_COMPILER__Cineginsa_unscanned_Debug /home/clement/Cineginsa/regie.cpp || cmake_object_order_depends_target_Cineginsa
+  CONFIG = Debug
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/Cineginsa.dir/regie.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -I/home/clement/Cineginsa/build/Desktop-Debug/Cineginsa_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtQuick -isystem /usr/include/x86_64-linux-gnu/qt6/QtQml -isystem /usr/include/x86_64-linux-gnu/qt6/QtQmlIntegration -isystem /usr/include/x86_64-linux-gnu/qt6/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtMultimedia
+  OBJECT_DIR = CMakeFiles/Cineginsa.dir
+  OBJECT_FILE_DIR = CMakeFiles/Cineginsa.dir
+  TARGET_SUPPORT_DIR = CMakeFiles/Cineginsa.dir
+
 build CMakeFiles/Cineginsa.dir/build/Desktop-Debug/.qt/rcc/qrc_qml.cpp.o: CXX_COMPILER__Cineginsa_unscanned_Debug /home/clement/Cineginsa/build/Desktop-Debug/.qt/rcc/qrc_qml.cpp || cmake_object_order_depends_target_Cineginsa
   CONFIG = Debug
   DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QML_LIB -DQT_QUICK_LIB -DQT_WIDGETS_LIB
@@ -97,7 +107,7 @@ build CMakeFiles/Cineginsa.dir/build/Desktop-Debug/.qt/rcc/qrc_qml.cpp.o: CXX_CO
 #############################################
 # Link the executable Cineginsa
 
-build Cineginsa: CXX_EXECUTABLE_LINKER__Cineginsa_Debug CMakeFiles/Cineginsa.dir/Cineginsa_autogen/mocs_compilation.cpp.o CMakeFiles/Cineginsa.dir/main.cpp.o CMakeFiles/Cineginsa.dir/mainwindow.cpp.o CMakeFiles/Cineginsa.dir/build/Desktop-Debug/.qt/rcc/qrc_qml.cpp.o | /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Quick.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Multimedia.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Qml.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.10.2 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.10.2 || Cineginsa_autogen Cineginsa_autogen_timestamp_deps Cineginsa_qmlimportscan
+build Cineginsa: CXX_EXECUTABLE_LINKER__Cineginsa_Debug CMakeFiles/Cineginsa.dir/Cineginsa_autogen/mocs_compilation.cpp.o CMakeFiles/Cineginsa.dir/main.cpp.o CMakeFiles/Cineginsa.dir/mainwindow.cpp.o CMakeFiles/Cineginsa.dir/regie.cpp.o CMakeFiles/Cineginsa.dir/build/Desktop-Debug/.qt/rcc/qrc_qml.cpp.o | /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Quick.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Multimedia.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Qml.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.10.2 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.10.2 /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.10.2 || Cineginsa_autogen Cineginsa_autogen_timestamp_deps Cineginsa_qmlimportscan
   CONFIG = Debug
   DEP_FILE = CMakeFiles/Cineginsa.dir/link.d
   FLAGS = -DQT_QML_DEBUG -g
@@ -191,7 +201,7 @@ build Cineginsa_autogen_timestamp_deps: phony Cineginsa_qmlimportscan
 #############################################
 # Utility command for Cineginsa_autogen
 
-build Cineginsa_autogen: phony CMakeFiles/Cineginsa_autogen Cineginsa_autogen/include/ui_mainwindow.h Cineginsa_autogen/timestamp Cineginsa_autogen/mocs_compilation.cpp Cineginsa_autogen_timestamp_deps
+build Cineginsa_autogen: phony CMakeFiles/Cineginsa_autogen Cineginsa_autogen/timestamp Cineginsa_autogen/mocs_compilation.cpp Cineginsa_autogen_timestamp_deps
 
 
 #############################################
@@ -206,9 +216,9 @@ build .qt/rcc/qrc_qml.cpp | ${cmake_ninja_workdir}.qt/rcc/qrc_qml.cpp: CUSTOM_CO
 #############################################
 # Custom command for Cineginsa_autogen/timestamp
 
-build Cineginsa_autogen/timestamp Cineginsa_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}Cineginsa_autogen/timestamp ${cmake_ninja_workdir}Cineginsa_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /usr/lib/qt6/libexec/moc /usr/lib/qt6/libexec/uic || Cineginsa_autogen_timestamp_deps Cineginsa_qmlimportscan
+build Cineginsa_autogen/timestamp Cineginsa_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}Cineginsa_autogen/timestamp ${cmake_ninja_workdir}Cineginsa_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /usr/lib/qt6/libexec/moc || Cineginsa_autogen_timestamp_deps Cineginsa_qmlimportscan
   COMMAND = cd /home/clement/Cineginsa/build/Desktop-Debug && /usr/bin/cmake -E cmake_autogen /home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/Cineginsa_autogen.dir/AutogenInfo.json Debug && /usr/bin/cmake -E touch /home/clement/Cineginsa/build/Desktop-Debug/Cineginsa_autogen/timestamp && /usr/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /home/clement/Cineginsa /home/clement/Cineginsa /home/clement/Cineginsa/build/Desktop-Debug /home/clement/Cineginsa/build/Desktop-Debug /home/clement/Cineginsa/build/Desktop-Debug/Cineginsa_autogen/deps /home/clement/Cineginsa/build/Desktop-Debug/CMakeFiles/d/09f0c7daad94553dd92364492befec6eb038c663538d0fbb034e47c841f7411e.d
-  DESC = Automatic MOC and UIC for target Cineginsa
+  DESC = Automatic MOC for target Cineginsa
   depfile = CMakeFiles/d/09f0c7daad94553dd92364492befec6eb038c663538d0fbb034e47c841f7411e.d
   deps = gcc
   restat = 1
@@ -232,7 +242,7 @@ build .qt/qml_imports/Cineginsa_build.cmake | ${cmake_ninja_workdir}.qt/qml_impo
 #############################################
 # Phony custom command for CMakeFiles/Cineginsa_autogen
 
-build CMakeFiles/Cineginsa_autogen Cineginsa_autogen/include/ui_mainwindow.h | ${cmake_ninja_workdir}CMakeFiles/Cineginsa_autogen ${cmake_ninja_workdir}Cineginsa_autogen/include/ui_mainwindow.h: phony Cineginsa_autogen/timestamp || Cineginsa_autogen_timestamp_deps Cineginsa_qmlimportscan
+build CMakeFiles/Cineginsa_autogen | ${cmake_ninja_workdir}CMakeFiles/Cineginsa_autogen: phony Cineginsa_autogen/timestamp || Cineginsa_autogen_timestamp_deps Cineginsa_qmlimportscan
 
 # =============================================================================
 # Target aliases.

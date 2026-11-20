@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1000</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,11 +14,66 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QLineEdit" name="titleEdit">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>250</y>
+      <x>170</x>
+      <y>140</y>
+      <width>113</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="durationEdit">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>180</y>
+      <width>113</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="langCombo">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>220</y>
+      <width>86</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>VF</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>VOST-FR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>VO</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QTimeEdit" name="timeEdit">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>260</y>
+      <width>118</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAffiche">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>300</y>
       <width>94</width>
       <height>26</height>
      </rect>
@@ -27,17 +82,89 @@
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelAffiche">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>200</y>
-      <width>261</width>
+      <x>280</x>
+      <y>310</y>
+      <width>66</width>
       <height>18</height>
      </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelFilm">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>350</y>
+      <width>66</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnFilm">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>340</y>
+      <width>94</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableSnacks">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>80</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Nom</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Prix</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="btnAjoutSnack">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>290</y>
+      <width>94</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSupprSnack">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>290</y>
+      <width>94</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>
@@ -46,12 +173,35 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1000</width>
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuPilotage">
+    <property name="title">
+     <string>Pilotage</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSc_ne">
+    <property name="title">
+     <string>Scène</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuParam_tres">
+    <property name="title">
+     <string>Paramètres</string>
+    </property>
+   </widget>
+   <addaction name="menuSc_ne"/>
+   <addaction name="menuPilotage"/>
+   <addaction name="menuParam_tres"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSc_ne">
+   <property name="text">
+    <string>Scène</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

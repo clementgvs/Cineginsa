@@ -8,6 +8,8 @@ Cineginsa_autogen/timestamp: \
 	/home/clement/Cineginsa/main.cpp \
 	/home/clement/Cineginsa/mainwindow.cpp \
 	/home/clement/Cineginsa/mainwindow.h \
+	/home/clement/Cineginsa/regie.cpp \
+	/home/clement/Cineginsa/regie.h \
 	/usr/include/alloca.h \
 	/usr/include/asm-generic/bitsperlong.h \
 	/usr/include/asm-generic/errno-base.h \
@@ -282,6 +284,16 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
 	/usr/include/x86_64-linux-gnu/gnu/stubs.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QMap \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QStringList \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QTime \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QTimer \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QUrl \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QVariant \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/QVariantList \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q17memory.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20functional.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20iterator.h \
@@ -290,6 +302,7 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q20utility.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q23type_traits.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/q23utility.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qabstracteventdispatcher.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qalloc.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
@@ -300,11 +313,13 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasictimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbindingstorage.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcheckedint_impl.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare.h \
@@ -319,8 +334,12 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdarwinhelpers.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qendian.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qexceptionhandling.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qfloat16.h \
@@ -338,6 +357,7 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qlatin1stringview.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qline.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmalloc.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qmap.h \
@@ -393,6 +413,7 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtenvironmentvariables.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtformat_impl.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtimer.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtnoop.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtpreprocessorsupport.h \
@@ -403,8 +424,10 @@ Cineginsa_autogen/timestamp: \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtversionchecks.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypes.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
+	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvariantlist.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
 	/usr/include/x86_64-linux-gnu/qt6/QtCore/qxptype_traits.h \
@@ -706,5 +729,4 @@ Cineginsa_autogen/timestamp: \
 	/usr/share/cmake-4.2/Modules/Platform/Linux-Initialize.cmake \
 	/usr/share/cmake-4.2/Modules/Platform/Linux.cmake \
 	/usr/share/cmake-4.2/Modules/Platform/UnixPaths.cmake \
-	/home/clement/Cineginsa/mainwindow.ui \
 	/usr/bin/cmake
