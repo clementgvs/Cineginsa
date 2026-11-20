@@ -3,6 +3,7 @@ name: Build Cineginsa Multi-Plateforme
 on:
   push:
     branches: [ main, master ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
@@ -73,20 +74,22 @@ jobs:
           name: Cineginsa-Linux-AppImage
           path: Cineginsa*.AppImage
 
-      # --- EMPAQUETAGE WINDOWS (Dossier autonome / ZIP) ---
-      - name: Rassembler les DLL Qt (Windows)
+      # --- EMPAQUETAGE WINDOWS (Archive ZIP autonome) ---
+      - name: Rassembler les DLL Qt et compresser (Windows)
         if: runner.os == 'Windows'
+        shell: pwsh
         run: |
-          mkdir deploy
-          copy build\Cineginsa.exe deploy\
+          New-Item -ItemType Directory -Force -Path deploy
+          Copy-Item build\Cineginsa.exe deploy\
           windeployqt --release --qmldir . deploy\Cineginsa.exe
+          Compress-Archive -Path deploy\* -DestinationPath Cineginsa-Windows.zip
 
       - name: Uploader le paquet Windows
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
           name: Cineginsa-Windows
-          path: deploy/
+          path: Cineginsa-Windows.zip
 
       # --- EMPAQUETAGE MACOS (.dmg) ---
       - name: Créer l'image disque .dmg (macOS)
@@ -102,3 +105,24 @@ jobs:
         with:
           name: Cineginsa-macOS
           path: Cineginsa-macOS.dmg
+
+  # --- PUBLICATION AUTOMATIQUE DANS GITHUB RELEASES ---
+  release:
+    name: Publier la Release GitHub
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+      - name: Récupérer les 3 builds générés
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Créer la Release et attacher les installeurs
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: artifacts/**/*
