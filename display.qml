@@ -18,9 +18,9 @@ Rectangle {
     // raccourcis quand la fenêtre projecteur a le focus (télécommande de présentation)
     focus: true
     Keys.onPressed: (event) => {
-        if (event.key === Qt.Key_PageDown || event.key === Qt.Key_Right) {
+        if (event.key === Qt.Key_PageDown) {
             regie.sceneSuivante(); event.accepted = true
-        } else if (event.key === Qt.Key_PageUp || event.key === Qt.Key_Left) {
+        } else if (event.key === Qt.Key_PageUp) {
             regie.scenePrecedente(); event.accepted = true
         }
     }
@@ -45,8 +45,9 @@ Rectangle {
 
     // film (toujours présent, c'est le lecteur C++ qui l'alimente)
     VideoOutput {
-        objectName: "video"
+        id: video
         anchors.fill: parent
+        Component.onCompleted: regie.attacherSortieVideo(video)
         opacity: regie.scene === "film" ? 1 : 0
         Behavior on opacity { NumberAnimation { duration: 600 } }
     }
@@ -189,16 +190,30 @@ Rectangle {
                         border.color: root.orange
                         border.width: 2 * root.u
 
-                        Image {
-                            anchors.fill: parent
-                            source: modelData.img
-                            fillMode: Image.PreserveAspectFit
+                        readonly property bool aImage: modelData.img !== ""
+                        Rectangle {
+                            id: vignette
+                            visible: parent.aImage
+                            x: 8 * root.u
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: parent.height - 16 * root.u
+                            height: width
+                            radius: 8 * root.u
+                            color: root.marine
+                            clip: true
+                            Image {
+                                anchors.fill: parent
+                                anchors.margins: 4 * root.u
+                                source: modelData.img
+                                fillMode: Image.PreserveAspectFit
+                                mipmap: true
+                            }
                         }
                         Text {
                             anchors.left: parent.left
-                            anchors.leftMargin: 22 * root.u
+                            anchors.leftMargin: (parent.aImage ? parent.height : 22 * root.u) + 6 * root.u
                             anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width * 0.58
+                            width: parent.width - anchors.leftMargin - 190 * root.u
                             text: modelData.nom
                             color: root.beige
                             font.pixelSize: 32 * root.u
@@ -310,5 +325,21 @@ Rectangle {
                 font.pixelSize: 56 * root.u
             }
         }
+    }
+
+    // sous-titres : le VideoOutput ne dessine pas le texte tout seul
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 80 * root.u
+        width: 1600 * root.u
+        opacity: regie.scene === "film" ? 1 : 0
+        text: video.videoSink ? video.videoSink.subtitleText : ""
+        color: "white"
+        style: Text.Outline
+        styleColor: "black"
+        font.pixelSize: 48 * root.u
+        horizontalAlignment: Text.AlignHCenter
+        wrapMode: Text.WordWrap
     }
 }

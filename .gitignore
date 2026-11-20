@@ -64,3 +64,4 @@ build-*/
 # Configuration locale de Qt Creator (spécifique à votre PC)
 *.user
 *.user.*
+Explications.txt

@@ -6,200 +6,641 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>940</width>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Cineginsa – Régie</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="titleEdit">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>140</y>
-      <width>113</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="durationEdit">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>180</y>
-      <width>113</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="langCombo">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>220</y>
-      <width>86</width>
-      <height>26</height>
-     </rect>
-    </property>
+   <layout class="QVBoxLayout" name="layoutPrincipal">
     <item>
-     <property name="text">
-      <string>VF</string>
-     </property>
+     <widget class="QTabWidget" name="onglets">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+
+      <!-- ===================== ONGLET SÉANCE ===================== -->
+      <widget class="QWidget" name="tabSeance">
+       <attribute name="title">
+        <string>Séance</string>
+       </attribute>
+       <layout class="QFormLayout" name="formSeance">
+        <item row="0" column="0">
+         <widget class="QLabel" name="lblTitre">
+          <property name="text">
+           <string>Titre</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="editTitre">
+          <property name="placeholderText">
+           <string>Titre du film</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="lblDuree">
+          <property name="text">
+           <string>Durée</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="editDuree">
+          <property name="placeholderText">
+           <string>ex : 2h 15min</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="lblLangue">
+          <property name="text">
+           <string>Langue</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="comboLangue">
+          <item>
+           <property name="text">
+            <string>VF</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>VOST FR</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="lblDebut">
+          <property name="text">
+           <string>Heure de début</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QTimeEdit" name="timeDebut">
+          <property name="displayFormat">
+           <string>HH:mm</string>
+          </property>
+          <property name="time">
+           <time>
+            <hour>20</hour>
+            <minute>30</minute>
+            <second>0</second>
+           </time>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="lblMessage">
+          <property name="text">
+           <string>Message (scène Infos)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="editMessage">
+          <property name="text">
+           <string>Merci d'éteindre vos téléphones</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="lblAffiche">
+          <property name="text">
+           <string>Affiche</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <layout class="QHBoxLayout" name="ligneAffiche" stretch="0,1">
+          <item>
+           <widget class="QPushButton" name="btnAffiche">
+            <property name="text">
+             <string>Choisir l'affiche…</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelAffiche">
+            <property name="text">
+             <string>(aucune)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="lblLogo">
+          <property name="text">
+           <string>Logo (en haut à droite)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <layout class="QHBoxLayout" name="ligneLogo" stretch="0,1">
+          <item>
+           <widget class="QPushButton" name="btnLogo">
+            <property name="text">
+             <string>Choisir le logo…</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelLogo">
+            <property name="text">
+             <string>(aucun)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="lblFilm">
+          <property name="text">
+           <string>Film</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="1">
+         <layout class="QHBoxLayout" name="ligneFilm" stretch="0,1">
+          <item>
+           <widget class="QPushButton" name="btnFilm">
+            <property name="text">
+             <string>Choisir le film…</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelFilm">
+            <property name="text">
+             <string>(aucun)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ===================== ONGLET SNACKS ===================== -->
+      <widget class="QWidget" name="tabSnacks">
+       <attribute name="title">
+        <string>Snacks</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutSnacks" stretch="1,0">
+        <item>
+         <widget class="QTableWidget" name="tableSnacks">
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>Nom</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Prix</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Image</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="boutonsSnacks">
+          <item>
+           <widget class="QPushButton" name="btnAjout">
+            <property name="text">
+             <string>Ajouter</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSuppr">
+            <property name="text">
+             <string>Supprimer</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="spacerSnacks">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ===================== ONGLET RÉGIE ===================== -->
+      <widget class="QWidget" name="tabRegie">
+       <attribute name="title">
+        <string>Régie</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="layoutRegie">
+        <item>
+         <layout class="QGridLayout" name="grilleScenes">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="btnSceneAttente">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Attente &amp;&amp; snacks&#10;F1</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="btnSceneTimer">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Infos &amp;&amp; compte à rebours&#10;F2</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="btnSceneFilm">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Film&#10;F3</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QPushButton" name="btnSceneFin">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Fin&#10;F4</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="navScenes">
+          <item>
+           <widget class="QPushButton" name="btnPrec">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>44</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>◀  Scène précédente  (PgUp)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSuiv">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>44</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Scène suivante  (PgDn)  ▶</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelScene">
+          <property name="text">
+           <string>Scène : </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="boiteTimer">
+          <layout class="QVBoxLayout" name="layoutTimer">
+           <item>
+            <layout class="QHBoxLayout" name="ligneDuree">
+             <item>
+              <widget class="QLabel" name="lblDureeTimer">
+               <property name="text">
+                <string>Durée du timer :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinMin">
+               <property name="suffix">
+                <string> min</string>
+               </property>
+               <property name="maximum">
+                <number>999</number>
+               </property>
+               <property name="value">
+                <number>10</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinSec">
+               <property name="suffix">
+                <string> s</string>
+               </property>
+               <property name="maximum">
+                <number>59</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnCaler">
+               <property name="text">
+                <string>Caler sur l'heure de début</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="spacerTimer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelTimer">
+               <property name="text">
+                <string>10:00</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="ligneBoutonsTimer" stretch="1,0">
+             <item>
+              <widget class="QPushButton" name="btnTimer">
+               <property name="text">
+                <string>Lancer le timer  (T)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnReset">
+               <property name="text">
+                <string>Réinitialiser</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkAutoFilm">
+             <property name="text">
+              <string>Lancer le film automatiquement à 00:00</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkAfficherTimer">
+             <property name="text">
+              <string>Passer sur la scène « Infos &amp;&amp; compte à rebours » au lancement</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="ligneLecture" stretch="0,1,0">
+          <item>
+           <widget class="QPushButton" name="btnReculer">
+            <property name="text">
+             <string>−10 s</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnPlay">
+            <property name="text">
+             <string>Lecture / Pause  (P)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAvancer">
+            <property name="text">
+             <string>+10 s</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="lignePosition" stretch="1,0">
+          <item>
+           <widget class="QSlider" name="sliderPosition">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelPosition">
+            <property name="text">
+             <string>00:00 / 00:00</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLecteur">
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblVolume">
+            <property name="text">
+             <string>Volume</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSlider" name="sliderVolume">
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>80</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblAudio">
+            <property name="text">
+             <string>Piste audio</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboAudio"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lblSous">
+            <property name="text">
+             <string>Sous-titres</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="comboSous"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="spacerRegie">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+
+      <!-- ===================== ONGLET RÉGLAGES ===================== -->
+      <widget class="QWidget" name="tabReglages">
+       <attribute name="title">
+        <string>Réglages</string>
+       </attribute>
+       <layout class="QFormLayout" name="formReglages">
+        <item row="0" column="0">
+         <widget class="QLabel" name="lblEcran">
+          <property name="text">
+           <string>Écran projecteur</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="comboEcran"/>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <widget class="QCheckBox" name="checkFenetre">
+          <property name="text">
+           <string>Mode fenêtré (test, sans plein écran)  –  F11</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QPushButton" name="btnActualiser">
+          <property name="text">
+           <string>Actualiser les écrans</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
-    <item>
-     <property name="text">
-      <string>VOST-FR</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>VO</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QTimeEdit" name="timeEdit">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>260</y>
-      <width>118</width>
-      <height>27</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnAffiche">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>300</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelAffiche">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>310</y>
-      <width>66</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelFilm">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>350</y>
-      <width>66</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnFilm">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>340</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableSnacks">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>80</y>
-      <width>256</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string>Nom</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Prix</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QPushButton" name="btnAjoutSnack">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>290</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSupprSnack">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>290</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1000</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuPilotage">
+   <widget class="QMenu" name="menuFichier">
     <property name="title">
-     <string>Pilotage</string>
+     <string>Fichier</string>
     </property>
+    <addaction name="actionCharger"/>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuitter"/>
    </widget>
-   <widget class="QMenu" name="menuSc_ne">
-    <property name="title">
-     <string>Scène</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuParam_tres">
-    <property name="title">
-     <string>Paramètres</string>
-    </property>
-   </widget>
-   <addaction name="menuSc_ne"/>
-   <addaction name="menuPilotage"/>
-   <addaction name="menuParam_tres"/>
+   <addaction name="menuFichier"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSc_ne">
+  <action name="actionCharger">
    <property name="text">
-    <string>Scène</string>
+    <string>Charger une séance…</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer">
+   <property name="text">
+    <string>Enregistrer la séance…</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionQuitter">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

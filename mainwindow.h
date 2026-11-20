@@ -1,19 +1,18 @@
 #pragma once
+#include <QJsonObject>
 #include <QMainWindow>
 #include <QMap>
 
-class Regie;
 class QButtonGroup;
-class QCheckBox;
-class QComboBox;
-class QLabel;
-class QLineEdit;
 class QPushButton;
 class QQuickView;
-class QSlider;
-class QSpinBox;
-class QTableWidget;
-class QTimeEdit;
+class Regie;
+
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class MainWindow;
+}
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
@@ -26,70 +25,58 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 private:
-    // construction de l'interface
-    void construireInterface();
-    QWidget *ongletSeance();
-    QWidget *ongletSnacks();
-    QWidget *ongletPilotage();
-    QWidget *ongletReglages();
+    // construction
+    void initialiserInterface();
+    void creerAffichage();
+    void creerRaccourcis();
+    void connecterSeance();
+    void connecterSnacks();
+    void connecterPilotage();
+    void connecterLecteur();
+    void connecterReglages();
 
     // affichage projecteur
-    void creerAffichage();
+    void remplirEcrans();
     void placerAffichage();
 
-    // logique
-    void brancherLecteur();
+    // widgets -> Regie
     void appliquerSeance();
     void appliquerSnacks();
-    void ajouterSnack(const QString &nom, const QString &prix, const QString &imageUrl = QString());
-    QString choisirImageSnack(const QString & nom);
+    void appliquerTimer();
+    void ajouterSnack(const QString &nom, const QString &prix, const QString &image = QString());
+    QString choisirImageSnack(const QString &nom);
     void choisirAffiche();
     void choisirFilm();
     void choisirLogo();
-    void appliquerTimer();
+    void definirAffiche(const QString &chemin);
+    void definirLogo(const QString &chemin);
+    void definirFilm(const QString &chemin);
+
+    // Regie -> widgets
+    void majScene();
     void majPistes();
-    void remplirEcrans();
+    void majPosition(qint64 ms);
+
+    // sauvegarde
+    QJsonObject seanceEnJson() const;
+    void appliquerJson(const QJsonObject &o);
+    QString cheminDerniereSeance() const;
+    void chargerDerniereSeance();
+    void sauverSeance();
+    void chargerSeance();
     void chargerReglages();
-    void enregistrerReglages();
+    void enregistrerReglages() const;
+
     static QString formatMs(qint64 ms);
 
+    Ui::MainWindow *ui = nullptr;
     Regie *m_regie = nullptr;
     QQuickView *m_affichage = nullptr;
-
-    // onglet Séance
-    QLineEdit *m_editTitre = nullptr;
-    QLineEdit *m_editDuree = nullptr;
-    QComboBox *m_comboLangue = nullptr;
-    QTimeEdit *m_timeDebut = nullptr;
-    QLineEdit *m_editMessage = nullptr;
-    QLabel *m_labelAffiche = nullptr;
-    QLabel *m_labelFilm = nullptr;
-    QLabel *m_labelLogo = nullptr;
-
-    // onglet Snacks
-    QTableWidget *m_tableSnacks = nullptr;
-
-    // onglet Pilotage
-    QMap<QString, QPushButton *> m_boutonsScene;
     QButtonGroup *m_groupeScenes = nullptr;
-    QLabel *m_labelScene = nullptr;
-    QLabel *m_labelTimer = nullptr;
-    QLabel *m_labelPosition = nullptr;
-    QSpinBox *m_spinMin = nullptr;
-    QSpinBox *m_spinSec = nullptr;
-    QPushButton *m_btnTimer = nullptr;
-    QCheckBox *m_checkAutoFilm = nullptr;
-    QCheckBox *m_checkAfficherTimer = nullptr;
-    QSlider *m_sliderPosition = nullptr;
-    QSlider *m_sliderVolume = nullptr;
-    QComboBox *m_comboAudio = nullptr;
-    QComboBox *m_comboSous = nullptr;
-
-    // onglet Réglages
-    QComboBox *m_comboEcran = nullptr;
-    QCheckBox *m_checkFenetre = nullptr;
+    QMap<QString, QPushButton *> m_boutonsScene;
 
     QString m_cheminAffiche;
     QString m_cheminFilm;
     QString m_cheminLogo;
+    bool m_chargement = false;     // vrai pendant le chargement d'un fichier de séance
 };

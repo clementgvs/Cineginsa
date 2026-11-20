@@ -10,8 +10,9 @@
 class QMediaPlayer;
 class QAudioOutput;
 
-// Cœur de la régie : état de la séance, scène en cours, timer, lecteur vidéo.
+// Cœur de la régie : état de la séance, scène en cours, timer ET lecteur vidéo.
 // Les Widgets l'appellent, le QML le lit (context property "regie").
+// MainWindow ne touche jamais au QMediaPlayer : tout passe par les fonctions ci-dessous.
 class Regie : public QObject
 {
     Q_OBJECT
@@ -31,6 +32,7 @@ class Regie : public QObject
 public:
     explicit Regie(QObject *parent = nullptr);
 
+    // --- lecture des propriétés ---
     QString scene() const { return m_scene; }
     QString titre() const { return m_titre; }
     QString duree() const { return m_duree; }
@@ -46,20 +48,31 @@ public:
     int timerDuree() const { return m_timerDuree; }
     QTime debut() const { return m_debut; }
 
-    QMediaPlayer *player() const { return m_player; }
-    QAudioOutput *audio() const { return m_audio; }
-
+    // --- séance ---
     void definirSeance(const QString &titre, const QString &duree, const QString &langue,
                        const QTime &debut, const QString &message);
     void definirSnacks(const QVariantList &snacks);
     void definirAffiche(const QUrl &url);
     void definirLogo(const QUrl &url);
-    void chargerFilm(const QUrl &url);
 
-    // timer
+    // --- timer ---
     void definirTimer(int secondes);          // durée configurée (remet le timer à cette valeur s'il est arrêté)
     void setAutoFilm(bool oui) { m_autoFilm = oui; }
     bool autoFilm() const { return m_autoFilm; }
+
+    // --- film / lecteur ---
+    void chargerFilm(const QUrl &url);        // url vide ou fichier absent -> aucun film chargé
+    bool filmCharge() const { return m_filmCharge; }
+    qint64 position() const;
+    qint64 dureeFilm() const;
+    bool enLecture() const;
+    QStringList pistesAudio() const;
+    int pisteAudioActive() const;
+    QStringList pistesSousTitres() const;
+    int pisteSousTitresActive() const;
+
+    // Appelé par display.qml pour brancher son VideoOutput au lecteur
+    Q_INVOKABLE void attacherSortieVideo(QObject *sortie);
 
 public slots:
     void setScene(const QString &scene);      // attente, timer, film, fin
@@ -71,12 +84,25 @@ public slots:
     void basculerTimer();                     // lancer <-> pause
     void reinitialiserTimer();
 
+    void basculerLecture();                   // lecture <-> pause
+    void sauter(int secondes);                // relatif : -10, +10...
+    void setPosition(qint64 ms);
+    void setVolume(int pourcent);             // 0..100 (le curseur est perceptuel, converti en linéaire)
+    void setPisteAudio(int index);
+    void setPisteSousTitres(int index);       // -1 = aucun
+
 signals:
     void sceneChanged();
     void seanceChanged();
     void compteChanged();
     void timerChanged();                      // actif / arrêté
     void timerTermine();
+
+    void positionChanged(qint64 ms);
+    void dureeFilmChanged(qint64 ms);
+    void pistesChanged();
+    void lectureChanged(bool enLecture);
+    void erreur(const QString &message);      // à afficher dans la barre d'état
 
 private:
     void tick();
@@ -98,6 +124,8 @@ private:
     QElapsedTimer m_chrono;
     QTimer m_tick;
 
+    // lecteur
+    bool m_filmCharge = false;
     QMediaPlayer *m_player = nullptr;
     QAudioOutput *m_audio = nullptr;
 };
