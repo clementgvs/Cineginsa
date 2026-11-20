@@ -45,16 +45,6 @@ cmake --build build
 ./build/Cineginsa
 ```
 
-## Créer les exécutables
-
-On compile sur chaque système (via GitHub Actions qui fournit des machines Windows, macOS et Linux). Les outils de déploiement de Qt copient les bibliothèques nécessaires à côté de l'exécutable, en liaison dynamique (indispensable pour respecter la LGPL de Qt).
-
-| Système | Outil | Commande (à adapter) |
-|---|---|---|
-| Windows | `windeployqt` | `windeployqt --qmldir . build\Release\Cineginsa.exe` |
-| macOS | `macdeployqt` | `macdeployqt Cineginsa.app -qmldir=.` |
-| Linux | `linuxdeploy` + plugin Qt | `linuxdeploy --appdir AppDir --plugin qt -e build/Cineginsa -d cineginsa.desktop -i icon.png --output appimage` |
-
 ## Structure
 
 ```
