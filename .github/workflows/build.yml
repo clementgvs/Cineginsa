@@ -33,7 +33,7 @@ jobs:
       - name: Installer Qt 6 et Ninja
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.*'
+          version: ${{ runner.os == 'Windows' && '6.8.3' || '6.*' }}
           arch: ${{ runner.os == 'Windows' && 'win64_msvc2022_64' || '' }}
           modules: 'qtmultimedia qtshadertools'
           tools: ${{ runner.os != 'Windows' && 'tools_ninja' || '' }}
