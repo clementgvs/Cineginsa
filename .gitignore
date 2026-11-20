@@ -57,6 +57,10 @@ compile_commands.json
 
 .qtcreator
 Deploy.md
+# Dossiers de compilation Qt Creator / CMake
 build/
-build
-build/*
+build-*/
+
+# Configuration locale de Qt Creator (spécifique à votre PC)
+*.user
+*.user.*
