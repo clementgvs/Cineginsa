@@ -327,6 +327,7 @@ Rectangle {
         }
     }
 
+    /*
     // sous-titres : le VideoOutput ne dessine pas le texte tout seul
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -342,4 +343,5 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         wrapMode: Text.WordWrap
     }
+    */
 }
