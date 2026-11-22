@@ -25,7 +25,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgl1-mesa-dev libxkbcommon-x11-0 libxcb-cursor0 libva-dev
+          sudo apt-get install -y libgl1-mesa-dev libxkbcommon-x11-0 libxcb-cursor0 libva-dev imagemagick
 
       - name: Configurer le compilateur MSVC (Windows)
         if: runner.os == 'Windows'
@@ -59,7 +59,7 @@ jobs:
           Icon=cineginsa
           Categories=AudioVideo;Utility;
           DESKTOP
-          python3 -c "import zlib, struct; w=h=256; raw=b''.join(b'\x00'+b'\x00\x00\x00'*w for _ in range(h)); png=b'\x89PNG\r\n\x1a\n'+b''.join(struct.pack('>I',len(d))+t+d+struct.pack('>I',zlib.crc32(t+d)&0xffffffff) for t,d in [(b'IHDR',struct.pack('>IIBBBBB',w,h,8,2,0,0,0)),(b'IDAT',zlib.compress(raw)),(b'IEND',b'')]); open('AppDir/usr/share/icons/hicolor/256x256/apps/cineginsa.png','wb').write(png)"
+          convert assets/logo.png -resize 256x256 AppDir/usr/share/icons/hicolor/256x256/apps/cineginsa.png
           wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
           wget -q https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
           chmod +x linuxdeploy*.AppImage
@@ -81,6 +81,10 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path deploy
           Copy-Item build\Cineginsa.exe deploy\
+          magick assets\logo.png -define icon:auto-resize=256,128,64,48,32,16 deploy\cineginsa.ico
+          Invoke-WebRequest -Uri "https://github.com/electron/rcedit/releases/download/v2.0.0/rcedit-x64.exe" -OutFile "rcedit.exe"
+          .\rcedit.exe deploy\Cineginsa.exe --set-icon deploy\cineginsa.ico
+          Remove-Item deploy\cineginsa.ico
           windeployqt --release --qmldir . deploy\Cineginsa.exe
           Compress-Archive -Path deploy\* -DestinationPath Cineginsa-Windows.zip
 
@@ -95,6 +99,15 @@ jobs:
       - name: Créer l'image disque .dmg (macOS)
         if: runner.os == 'macOS'
         run: |
+          mkdir -p Cineginsa.iconset build/Cineginsa.app/Contents/Resources
+          for size in 16 32 64 128 256 512; do
+            sips -z $size $size assets/logo.png --out Cineginsa.iconset/icon_${size}x${size}.png
+            double=$((size * 2))
+            sips -z $double $double assets/logo.png --out Cineginsa.iconset/icon_${size}x${size}@2x.png
+          done
+          iconutil -c icns Cineginsa.iconset -o build/Cineginsa.app/Contents/Resources/cineginsa.icns
+          /usr/libexec/PlistBuddy -c "Add :CFBundleIconFile string cineginsa.icns" build/Cineginsa.app/Contents/Info.plist || \
+          /usr/libexec/PlistBuddy -c "Set :CFBundleIconFile cineginsa.icns" build/Cineginsa.app/Contents/Info.plist
           macdeployqt build/Cineginsa.app -qmldir=.
           codesign --deep --force --sign - build/Cineginsa.app
           hdiutil create -volname "Cineginsa" -srcfolder build/Cineginsa.app -ov -format UDZO Cineginsa-macOS.dmg
