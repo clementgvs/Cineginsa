@@ -4,7 +4,7 @@ import QtMultimedia
 // Écran projecteur. "regie" est injecté depuis le C++ (context property).
 Rectangle {
     id: root
-    color: "#011329"
+    color: regie.scene === "film" ? "#000000" : "#011329"
 
     readonly property real u: height / 1080
     readonly property color orange: "#ff7a1a"
