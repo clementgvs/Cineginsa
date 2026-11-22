@@ -6,6 +6,8 @@
 #include <QLocale>
 #include <QMediaMetaData>
 #include <QMediaPlayer>
+#include <QRegularExpression>
+#include <QVideoSink>
 #include <QtMath>
 
 namespace {
@@ -39,6 +41,15 @@ namespace {
         for (int i = 0; i < pistes.size(); ++i)
             noms << nomPiste(pistes.at(i), i, defaut);
         return noms;
+    }
+
+    QString nettoyerSousTitre(QString t)
+    {
+        t.remove(QRegularExpression(R"(\{[^}]*\})"));        // codes ASS : {i1} {\i1} {\an8} {\pos(..)}
+        t.remove(QRegularExpression(R"(</?[^>]+>)"));        // balises <i> <b> <font ...>
+        t.replace(QRegularExpression(R"(\\[Nn])"), "\n");    // \N = retour à la ligne
+        t.replace("\\h", " ");
+        return t.trimmed();
     }
 }
 
@@ -191,6 +202,17 @@ void Regie::setPisteSousTitres(int index) { m_player->setActiveSubtitleTrack(ind
 void Regie::attacherSortieVideo(QObject *sortie)
 {
     m_player->setVideoOutput(sortie);
+
+    auto *sink = sortie ? sortie->property("videoSink").value<QVideoSink *>() : nullptr;
+    if (sink) {
+        connect(sink, &QVideoSink::subtitleTextChanged, this, [sink] {
+            const QString brut = sink->subtitleText();
+            printf("%s", brut.toStdString().c_str());
+            const QString propre = nettoyerSousTitre(brut);
+            if (propre != brut)
+                sink->setSubtitleText(propre);
+        });
+    }
 }
 
 // timer
